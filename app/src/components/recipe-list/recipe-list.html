@@ -1,0 +1,53 @@
+<div class="container relative">
+  <curtain [shouldShow]="!(busyRecipes$ | async).isEmpty()"></curtain>
+  <div class="row col-md-12">
+    <table class="table table-striped">
+      <thead>
+      <a
+        [routerLink]="['/recipe']"
+        class="btn btn-primary btn-xs">
+        <i class="glyphicon glyphicon-plus"></i>
+        Add new recipe
+      </a>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Source</th>
+        <th>Number of ingredients</th>
+        <th>Ingredients</th>
+        <th>Preparation instructions</th>
+        <th>Preparation time</th>
+        <th class="text-center">Action</th>
+      </tr>
+      </thead>
+
+      <tbody>
+        <tr
+          *ngFor="let recipe of recipes; trackBy: trackById"
+          [routerLink]="['/recipe/' + recipe.id]">
+          <td>{{ recipe.id }}</td>
+          <td>{{ recipe.name }}</td>
+          <td>{{ recipe.source }}</td>
+          <td>{{ recipe.ingredients.count() }}</td>
+          <td>{{ getIngredientsPreviewText(recipe.ingredients) }}</td>
+          <td>{{ getPreparationInstructionsPreviewText(recipe.preparationInstructions) }}</td>
+          <td>{{ getPreparationTimePreviewText(recipe.preparationTime) }}</td>
+          <td class="text-center">
+            <a
+              class='btn btn-info btn-xs'
+              (click)="$event.preventDefault(); $event.stopPropagation();"
+              [routerLink]="['/recipe/' + recipe.id]">
+              <i class="glyphicon glyphicon-edit"></i> Details
+            </a>
+            <button
+              (click)="deleteRecipe(recipe); $event.preventDefault(); $event.stopPropagation();"
+              class="btn btn-danger btn-xs">
+              <i class="glyphicon glyphicon-remove"></i> Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+</div>

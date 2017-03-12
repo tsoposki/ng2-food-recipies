@@ -1,0 +1,29 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    position: relative;
+    flex: 1;
+    background-color: white;
+  }
+  & > router-outlet {
+    flex: none;
+    background: none;
+  }
+  .app-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  // z stack
+  toaster-container {
+    z-index: 1000;
+  }
+  router-outlet {
+    z-index: 100;
+  }
+
+}

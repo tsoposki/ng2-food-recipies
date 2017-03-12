@@ -1,0 +1,217 @@
+<div class="container">
+  <curtain [shouldShow]="isBusy$ | async"></curtain>
+
+  <div
+    style="
+    margin-top:50px"
+    class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <div class="panel-title">
+          <span class="text">{{ mode === 'create' ? 'Create recipe' : 'Recipe details' }}</span>
+          <a [routerLink]="['/recipes']"><i class="glyphicon glyphicon-remove close-btn"></i></a>
+        </div>
+      </div>
+      <div class="panel-body">
+        <form
+          [formGroup]="recipeEntryForm"
+          (submit)="submitRecipeEntryForm(recipeEntryForm.value)"
+          class="form-horizontal">
+
+          <div class="form-group">
+            <label
+              for="nameInput"
+              class="control-label col-md-4">
+              Name
+              <span class="asteriskField">*</span>
+            </label>
+            <div class="controls col-md-8">
+              <input
+                class="form-control"
+                [formControl]="recipeEntryForm.controls['name']"
+                id="nameInput"
+                placeholder="Enter the recipe name"
+                required
+                type="text" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label
+              for="sourceInput"
+              class="control-label col-md-4">
+              Source
+            </label>
+            <div class="controls col-md-8">
+              <input
+                class="form-control"
+                [formControl]="recipeEntryForm.controls['source']"
+                id="sourceInput"
+                placeholder="Enter the recipe source"
+                type="text" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label
+              for="id_ingredients"
+              class="control-label col-md-4">
+              Ingredients
+              <span class="asteriskField">*</span>
+            </label>
+            <div class="controls col-md-8">
+              <div
+                class="row"
+                *ngFor="let ingredient of (selectedIngredientsSubj | async)">
+                <div class="col-xs-6">
+                  <input
+                    class="form-control"
+                    [value]="ingredient.name"
+                    disabled=""
+                    type="text" />
+                </div>
+                <div
+                  style="display: flex"
+                  class="col-xs-6">
+                  <input
+                    class="col-xs-8"
+                    [formControl]="ingredient.control"
+                    class="form-control"
+                    placeholder="Amount"
+                    type="number"
+                    min="1"/>
+
+                  <i
+                    (click)="removeIngredient(ingredient)"
+                    class="glyphicon glyphicon-remove remove col-xs-4">
+                  </i>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <select
+                    id="id_ingredients"
+                    class="form-control"
+                    [formControl]="recipeEntryForm.controls['selectedIngredient']"
+                    required="">
+                    <option
+                      selected
+                      disabled
+                      [value]="inputSelectDefaultValue">
+                      --Select--
+                    </option>
+
+                    <option
+                      *ngFor="let ingredient of (ingredientsList$ | async); trackBy: trackById"
+                      [value]="ingredient.name">
+                      {{ ingredient.name }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-xs-6">
+                  <input
+                    class="form-control"
+                    [formControl]="recipeEntryForm.controls['selectedIngredientQuantity']"
+                    placeholder="Amount"
+                    type="number"
+                    min="1"/>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <button
+                    [disabled]="
+                      recipeEntryForm.controls['selectedIngredient'].value === inputSelectDefaultValue ||
+                      recipeEntryForm.controls['selectedIngredientQuantity'].value < 1
+                    "
+                    (click)="addIngredient(recipeEntryForm.controls['selectedIngredient'].value, recipeEntryForm.controls['selectedIngredientQuantity'].value); $event.preventDefault(); $event.stopPropagation();"
+                    class="btn btn-default"
+                    style="width: 100%">
+                    Add
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group required">
+            <label
+              for="id_preparationTime"
+              class="control-label col-md-4">
+              Preparation time
+              <span class="asteriskField">*</span>
+            </label>
+            <div class="controls col-md-8">
+              <div class="row">
+                <div class="col-xs-6">
+                  <input
+                    [formControl]="recipeEntryForm.controls['preparationTimeHours']"
+                    class="input-md textinput textInput form-control"
+                    id="id_preparationTime"
+                    placeholder="Hours"
+                    style="margin-bottom: 10px"
+                    required=""
+                    type="number"
+                    min="0" />
+                </div>
+                <div class="col-xs-6">
+                  <input
+                    [formControl]="recipeEntryForm.controls['preparationTimeMinutes']"
+                    class="input-md textinput textInput form-control"
+                    placeholder="Minutes"
+                    style="margin-bottom: 10px"
+                    required=""
+                    type="number"
+                    min="0" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group required">
+            <label
+              for="id_preparationInstructions"
+              class="control-label col-md-4">
+              Preparation instructions
+              <span class="asteriskField">*</span>
+            </label>
+            <div class="controls col-md-8 ">
+              <textarea
+                [formControl]="recipeEntryForm.controls['preparationInstructions']"
+                rows="4"
+                class="input-md textinput textInput form-control"
+                id="id_preparationInstructions"
+                required=""
+                minlength="15"
+                placeholder="Enter the preparation instructions"
+                style="margin-bottom: 10px">
+              </textarea>
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <div class="aab controls col-md-4 "></div>
+            <div class="controls col-md-8 ">
+              <button
+                style="width: 100%"
+                type="submit"
+                class="btn btn-primary">
+                {{ mode == 'update'  ? 'UPDATE' : 'CREATE' }}
+              </button>
+
+              <button
+                *ngIf="mode === 'update'"
+                style="width: 100%; margin-top: 15px;"
+                (click)="deleteRecipe(recipe); $event.preventDefault(); $event.stopPropagation();"
+                class="btn btn-danger">
+                <i class="glyphicon glyphicon-remove"></i> DELETE
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

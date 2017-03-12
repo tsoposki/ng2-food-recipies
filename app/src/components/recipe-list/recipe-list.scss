@@ -1,0 +1,17 @@
+recipe-list {
+  table {
+    position: relative;
+
+    thead {
+      .btn {
+        margin: 15px 0;
+      }
+    }
+    tbody {
+      tr {
+        position: relative;
+        cursor: pointer;
+      }
+    }
+  }
+}

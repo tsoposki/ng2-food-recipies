@@ -1,0 +1,46 @@
+// Alignment
+.text-left           { text-align: left !important; }
+.text-right          { text-align: right !important; }
+.text-center         { text-align: center !important; }
+.text-justify        { text-align: justify !important; }
+.text-nowrap         { white-space: nowrap !important; }
+
+.content-center     { justify-content: center !important; }
+.content-left       { justify-content: flex-start !important; }
+
+// Transformation
+.text-lowercase      { text-transform: lowercase; }
+.text-uppercase      { text-transform: uppercase; }
+.text-capitalize     { text-transform: capitalize; }
+.text-normal         { font-weight: normal; }
+.text-bold           { font-weight: bold; }
+.text-italic         { font-style: italic; }
+.text-underline      { text-decoration: underline; }
+
+// Positioning
+.clearfix { @include clearfix; }
+.pull-right { float: right !important; }
+.pull-left { float: left !important; }
+
+
+.fg-danger {color: $alert-danger-text !important}
+
+.link                                       { cursor: pointer; }
+
+.flex-1                                     { flex: 1; }
+
+.relative                                   { position: relative !important; }
+.absolute                                   { position: absolute !important; }
+.fixed                                      { position: fixed !important; }
+
+.thin                                       { font-weight: 300 !important; }
+.normal                                     { font-weight: 400 !important; }
+.bold                                       { font-weight: 500 !important; }
+.bolder                                     { font-weight: 700 !important; }
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+.block { display: block; }
+.inline-block { display: inline-block; }

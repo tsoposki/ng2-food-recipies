@@ -1,0 +1,5 @@
+<recipe-entry
+  [ingredients]="(ingredients$ | async)"
+  [recipe]="recipe$ | async"
+  [mode]="(recipeId$ | async) ? 'update' : 'create'">
+</recipe-entry>
