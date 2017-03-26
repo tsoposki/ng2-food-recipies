@@ -17,21 +17,20 @@
     '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
     '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
     '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',
+    '@angular/animations': 'node_modules/@angular/animations/bundles/animations.umd.min.js',
+    '@angular/animations/browser':'node_modules/@angular/animations/bundles/animations-browser.umd.js',
     '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
+    '@angular/platform-browser/animations': 'node_modules/@angular/platform-browser/bundles/platform-browser-animations.umd.js',
     '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
     '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
     '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
     '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
-    'moment': 'node_modules/moment/moment.js',
-    'ng2-bootstrap/ng2-bootstrap': 'node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
 
-    'rxjs': 'node_modules/rxjs',
     '@ngrx/core': 'node_modules/@ngrx/core/bundles/core.min.umd.js',
     '@ngrx/store': 'node_modules/@ngrx/store/bundles/store.min.umd.js',
 
+    'rxjs': 'node_modules/rxjs',
     'immutable': 'node_modules/immutable/dist/immutable.js',
-    'moment-timezone': 'node_modules/moment-timezone/builds/moment-timezone-with-data.min.js',
-    'jquery': 'node_modules/jquery/dist/jquery.min.js',
     'lodash': 'node_modules/lodash/lodash.js',
     'typed-immutable-record': 'node_modules/typed-immutable-record/dist',
     "ng2-toastr": "npm:ng2-toastr"
@@ -42,7 +41,6 @@
     'rxjs':          { defaultExtension: 'js' },
     '@ngrx/core':    { main: 'index.js', format: 'cjs' },
     '@ngrx/store':   { main: 'index.js', format: 'cjs' },
-    'fuzzy':         { defaultExtension: 'js' },
     'typed-immutable-record': { main: 'index.js', format: 'cjs' }
   };
 

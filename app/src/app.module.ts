@@ -18,6 +18,7 @@ import {RecipesNode} from "./nodes/recipes-node";
 import {RecipeListComponent} from "./components/recipe-list/recipe-list";
 import {RecipeListRoutedComponent} from "./routed-components/recipe-list-routed/recipe-list-routed";
 import {ToastModule, ToastOptions} from 'ng2-toastr/ng2-toastr';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import {ToastModule, ToastOptions} from 'ng2-toastr/ng2-toastr';
     HttpModule,
     ReactiveFormsModule,
     routing,
+    BrowserAnimationsModule,
 
     ToastModule.forRoot(),
     StoreModule.provideStore(reducer)
