@@ -56,7 +56,7 @@ export class RecipeEntryRoutedComponent implements OnDestroy {
       (recipes, id) => {return {recipes, id}}
     )
       .filter(({recipes, id}) => !recipes || !recipes.has(id))
-      .flatMap(({recipes, id}) => this._recipesDispatcher.fetchRecipe(id))
+      .flatMap(({id}) => this._recipesDispatcher.fetchRecipe(id))
       .subscribe();
 
 }

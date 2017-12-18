@@ -78,7 +78,7 @@ export class RecipesDispatcher extends BaseDispatcher {
 
     return this._api
       .deleteRecipe(theRecipeId)
-      .do(res => this.dispatch(RecipesActions.DELETE_RECIPE, theRecipeId))
+      .do(() => this.dispatch(RecipesActions.DELETE_RECIPE, theRecipeId))
       .finally(() => this.dispatch(RecipesActions.NOT_DELETING_RECIPE, theRecipeId));
   }
 

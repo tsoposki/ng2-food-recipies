@@ -174,7 +174,7 @@ const setEntities = ({identifier='id', state, collection=[], path, entityConstru
       path,
       OrderedMap(
         collection.reduce((memo, item) => {
-          memo[item.id] = entityConstructor(item);
+          memo[item[identifier]] = entityConstructor(item);
           return memo;
         }, {})
       )
