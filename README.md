@@ -1,7 +1,4 @@
-
 # ng2-food-recepies
-
-A small CRUD application built with Angular 4
 
 ## Install
 * [Git](http://git-scm.com/)
