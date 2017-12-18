@@ -10,3 +10,8 @@
 
 ## Run:
     npm start
+
+## Screenshots:
+![Screenshot of main view where recipes are listed](/readme_images/screen-1.png)
+![Screenshot of edit recipe view](/readme_images/screen-2.png)
+![Screenshot of create new recipe view](/readme_images/screen-3.png)
