@@ -1,14 +1,17 @@
 # ng2-food-recepies
 
 ## Install
+
 * [Git](http://git-scm.com/)
 * [NodeJS](https://nodejs.org/en/)
 * Clone project [repository](https://github.com/tsoposki/ng2-food-recipies)
   * Run: `npm install`
 
 
-## Run:
-    npm start
+## Development server
+
+Run `npm start` for a dev server. Navigate to `http://localhost:8080/`. The app will automatically reload if you change any of the source files.
+
 
 ## Screenshots:
 * Main view where recipes are listed
